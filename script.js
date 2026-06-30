@@ -172,6 +172,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Limpeza pós-montagem com descarte adequado de caixas"
             ],
             whatsappMessage: "Olá! Vim pelo site e gostaria de solicitar um orçamento para montagem de móveis residenciais."
+        },
+        divisorias: {
+            badge: "ACABAMENTO",
+            title: "Paredes, Gesso & Pintura",
+            desc: "Instalação especializada de divisórias navais (Eucatex), paredes de drywall, forros de gesso/PVC e pintura profissional residencial ou comercial. Soluções completas com acabamento de alta qualidade e rapidez.",
+            images: [
+                "assets/divisorias_1.png",
+                "assets/divisorias_2.png"
+            ],
+            features: [
+                "Montagem e ajuste de Divisórias Navais (Eucatex) para escritórios",
+                "Construção de Paredes de Drywall com excelente isolamento",
+                "Instalação de Forros de Gesso liso e teto de PVC",
+                "Pintura residencial e comercial de alto padrão",
+                "Preparação de superfícies com massa corrida e texturas",
+                "Acabamentos decorativos com sancas, molduras e rodapés"
+            ],
+            whatsappMessage: "Olá! Vim pelo site e gostaria de solicitar um orçamento para paredes navais, gesso ou pintura."
         }
     };
 
@@ -219,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // WhatsApp CTA
-        const whatsappNumber = "5511999999999";
+        const whatsappNumber = "5531982957313";
         modalWhatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(data.whatsappMessage)}`;
 
         // Carousel slides
