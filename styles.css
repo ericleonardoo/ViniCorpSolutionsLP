@@ -627,6 +627,11 @@ button {
     overflow: hidden;
 }
 
+.why-us .container {
+    position: relative;
+    z-index: 1;
+}
+
 .why-us::before {
     content: '';
     position: absolute;
