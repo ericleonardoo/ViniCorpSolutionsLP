@@ -144,8 +144,11 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Móveis Corporativos",
             desc: "Nossa especialidade é a montagem técnica e layout de alta performance para escritórios, salas de reunião, coworkings e comércios. Desenvolvemos toda a logística de montagem para garantir prazos rápidos, alinhamento cirúrgico e estabilidade a longo prazo dos seus móveis de trabalho.",
             images: [
-                "assets/corporativo_1.png",
-                "assets/corporativo_2.png"
+                "img/3.jpeg", "img/4.jpeg", "img/6.jpeg", "img/7.jpeg", "img/8.jpeg",
+                "img/9.jpeg", "img/11.jpeg", "img/12.jpeg", "img/15.jpeg", "img/16.jpeg",
+                "img/17.jpeg", "img/18.jpeg", "img/20.jpeg", "img/21.jpeg", "img/22.jpeg",
+                "img/24.jpeg", "img/25.jpeg", "img/26.jpeg", "img/27.jpeg", "img/30.jpeg",
+                "img/31.jpeg", "img/32.jpeg", "img/33.jpeg"
             ],
             features: [
                 "Montagem em escala de Estações de Trabalho",
@@ -161,8 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Móveis Residenciais",
             desc: "Cuidado absoluto com o seu lar. Nossos montadores são treinados para manusear e fixar desde painéis suspensos a guarda-roupas de grande porte com precisão absoluta. Garantimos que seus móveis fiquem perfeitos, organizados e sem qualquer arranhão nas superfícies.",
             images: [
-                "assets/residencial_1.png",
-                "assets/residencial_2.png"
+                "img/2.jpeg", "img/10.jpeg", "img/13.jpeg", "img/14.jpeg", "img/19.jpeg",
+                "img/28.jpeg", "img/29.jpeg", "assets/residencial_1.png", "assets/residencial_2.png"
             ],
             features: [
                 "Montagem cuidadosa de Guarda-roupas de casal e solteiro",
@@ -178,8 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Paredes, Gesso & Pintura",
             desc: "Instalação especializada de divisórias navais (Eucatex), paredes de drywall, forros de gesso/PVC e pintura profissional residencial ou comercial. Soluções completas com acabamento de alta qualidade e rapidez.",
             images: [
-                "assets/divisorias_1.png",
-                "assets/divisorias_2.png"
+                "img/1.jpeg", "img/5.jpeg", "img/23.jpeg", "assets/divisorias_1.png", "assets/divisorias_2.png"
             ],
             features: [
                 "Montagem e ajuste de Divisórias Navais (Eucatex) para escritórios",
@@ -252,14 +254,32 @@ document.addEventListener('DOMContentLoaded', () => {
             slide.classList.add('carousel-slide');
             slide.innerHTML = `<img src="${imgUrl}" alt="${data.title} foto ${idx + 1}" draggable="false">`;
             carouselTrack.appendChild(slide);
-
-            // Indicator dot
-            const dot = document.createElement('div');
-            dot.classList.add('indicator-dot');
-            if (idx === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(idx));
-            carouselIndicators.appendChild(dot);
         });
+
+        if (slidesCount > 10) {
+            // Render text badge instead of dots
+            const badge = document.createElement('span');
+            badge.id = 'carousel-counter-badge';
+            badge.style.color = '#ffffff';
+            badge.style.backgroundColor = 'rgba(13, 27, 42, 0.75)';
+            badge.style.backdropFilter = 'blur(4px)';
+            badge.style.padding = '6px 16px';
+            badge.style.borderRadius = '50px';
+            badge.style.fontSize = '0.9rem';
+            badge.style.fontWeight = '600';
+            badge.style.border = '1px solid rgba(255, 255, 255, 0.15)';
+            badge.style.userSelect = 'none';
+            carouselIndicators.appendChild(badge);
+        } else {
+            data.images.forEach((imgUrl, idx) => {
+                // Indicator dot
+                const dot = document.createElement('div');
+                dot.classList.add('indicator-dot');
+                if (idx === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(idx));
+                carouselIndicators.appendChild(dot);
+            });
+        }
 
         updateCarouselPosition();
 
@@ -291,15 +311,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateCarouselPosition = () => {
         carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
         
-        // Update dots
-        const dots = carouselIndicators.querySelectorAll('.indicator-dot');
-        dots.forEach((dot, idx) => {
-            if (idx === currentSlide) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
-        });
+        // Update dots or counter badge
+        const badge = document.getElementById('carousel-counter-badge');
+        if (badge) {
+            badge.textContent = `${currentSlide + 1} de ${slidesCount}`;
+        } else {
+            const dots = carouselIndicators.querySelectorAll('.indicator-dot');
+            dots.forEach((dot, idx) => {
+                if (idx === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
     };
 
     // Autoplay functions
