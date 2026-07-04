@@ -843,8 +843,33 @@ button {
 .commitment-content p {
     font-size: 1.05rem;
     color: var(--color-text-secondary);
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     line-height: 1.7;
+}
+
+.experience-highlight {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(245, 166, 35, 0.08);
+    border: 1px dashed rgba(245, 166, 35, 0.3);
+    padding: 16px 24px;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 28px;
+    font-size: 1.05rem;
+    color: var(--color-primary);
+}
+
+.experience-highlight strong {
+    color: var(--color-accent-hover);
+    font-weight: 700;
+}
+
+.experience-highlight svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--color-accent);
+    flex-shrink: 0;
 }
 
 .commitment-content .btn {
